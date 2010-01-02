@@ -26,9 +26,13 @@ module Hellanzb
     end
 
     def enqueue(file)
-      @client.call('enqueue', file)
+      if file.is_a?(Integer)
+        @client.call('enqueuenewzbin', file)
+      else
+        @client.call('enqueue', file)
+      end
     end
-
+    
     def force(id)
       @client.call('force', id)
       update

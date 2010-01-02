@@ -13,28 +13,28 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-require File.dirname(__FILE__) + '/tmp/vendor/environment'
+# require File.dirname(__FILE__) + '/tmp/vendor/environment'
 
-require 'cucumber/rake/task' #I have to add this
-require 'spec/rake/spectask'
+# require 'cucumber/rake/task' #I have to add this
+# require 'spec/rake/spectask'
  
-namespace :rcov do
-  desc "Run the Cucumber features with code coverage"
-  Cucumber::Rake::Task.new(:features) do |t| 
-    t.rcov = true
-    t.rcov_opts = %w{--exclude gems\/,bin\/,features\/}
-    t.rcov_opts << %[-o "coverage"]
-  end
-end
-
-Cucumber::Rake::Task.new(:features) do |t|
-  t.profile = "default"
-end
-
-desc "Runs the Cucumber features by default"
-task :default => :features
-
-desc 'Run bacon'
-task :bacon do
-  puts `ruby tmp/bin/bacon #{Dir["spec/**/*_spec.rb"].join(" ")}`
-end
+# namespace :rcov do
+#   desc "Run the Cucumber features with code coverage"
+#   Cucumber::Rake::Task.new(:features) do |t| 
+#     t.rcov = true
+#     t.rcov_opts = %w{--exclude gems\/,bin\/,features\/}
+#     t.rcov_opts << %[-o "coverage"]
+#   end
+# end
+# 
+# Cucumber::Rake::Task.new(:features) do |t|
+#   t.profile = "default"
+# end
+# 
+# desc "Runs the Cucumber features by default"
+# task :default => :features
+# 
+# desc 'Run bacon'
+# task :bacon do
+#   puts `ruby tmp/bin/bacon #{Dir["spec/**/*_spec.rb"].join(" ")}`
+# end
